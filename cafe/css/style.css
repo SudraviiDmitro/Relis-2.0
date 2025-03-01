@@ -515,7 +515,7 @@ button {
 }
 
 .popular__slider-btn:hover {
-    background: #008D59;
+    background: rgb(0, 141, 89);
     border-color: #008D59;
     color: #fff;
 }
