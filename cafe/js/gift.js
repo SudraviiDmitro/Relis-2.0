@@ -1,9 +1,9 @@
 const startAnimation = (column, direction) => {
-    const speed = 1;
+    const speed = 1; // Швидкість анімації (менше значення - повільніше)
     let scrollAmount = 0;
 
     const animate = () => {
-        if(direction === "up") {
+        if (direction === "up") {
             column.scrollTop += speed;
             scrollAmount += speed;
         } else {
@@ -11,6 +11,7 @@ const startAnimation = (column, direction) => {
             scrollAmount -= speed;
         }
 
+        // Перевіряємо, якщо прокручено весь блок - повертаємо в початок
         if (direction === "up" && scrollAmount >= column.scrollHeight / 2) {
             column.scrollTop = 0;
             scrollAmount = 0;
@@ -22,8 +23,11 @@ const startAnimation = (column, direction) => {
         requestAnimationFrame(animate);
     };
 
+    // Дублюємо вміст, щоб створити ефект безперервної прокрутки
     column.innerHTML += column.innerHTML;
-    setTimeout(() => requestAnimationFrame(animate), 100)
+
+    // Додаємо невелику затримку перед запуском анімації
+    setTimeout(() => requestAnimationFrame(animate), 100);
 };
 
 document.addEventListener("DOMContentLoaded", () => {

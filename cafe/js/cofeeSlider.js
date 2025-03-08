@@ -1,7 +1,7 @@
 const slider = document.querySelector(".coffee__slider");
 const items = document.querySelectorAll(".coffee__slider-item");
 const totalItems = items.length;
-const transisionDuration = "0.5s";
+const transitionDuration = "0.5s";
 const visibleItems = 3;
 const offsetPercentage = 100 / visibleItems;
 
@@ -18,7 +18,7 @@ const updateSlider = () => {
     });
 
     const offset = -(currentIndex - 1) * offsetPercentage;
-    slider.style.transform = `translateX(&{offset}%)`; 
+    slider.style.transform = `translateX(${offset}%)`; 
 };
 
 const resetSlider = () => {
@@ -26,13 +26,13 @@ const resetSlider = () => {
         currentIndex = totalItems - (visibleItems + 1);
         slider.style.transition = "none";
         updateSlider();
-        setTimeout(() => (slider.style.transition = `tranform &{transitionDuration} ease-in-out`));
+        setTimeout(() => (slider.style.transition = `tranform ${transitionDuration} ease-in-out`));
     }
     else if (currentIndex === totalItems - 2) {
         currentIndex = 2
         slider.style.transition = "none"
         updateSlider()
-        setTimeout(() => (slider.style.transition = `tranform &{transitionDuration} ease-in-out`));
+        setTimeout(() => (slider.style.transition = `tranform ${transitionDuration} ease-in-out`));
     }
 };
 
@@ -40,7 +40,7 @@ const startSlider = () => {
     setInterval(() => {
         currentIndex++;
         updateSlider();
-        setTimeout(resetSlider, parseFloat(transisionDuration) * 1000);
+        setTimeout(resetSlider, parseFloat(transitionDuration) * 1000);
     }, intervalTime);
 };
 
